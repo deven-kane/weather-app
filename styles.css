@@ -34,6 +34,10 @@ ul {
   text-align: center;
 }
 
+li {
+  padding: 3px;
+}
+
 .header {
   align-content: center;
 }
