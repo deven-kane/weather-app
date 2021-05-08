@@ -54,6 +54,11 @@ li {
   align-content: center;
 }
 
+.celsius,
+.fahrenheit {
+  color: white;
+}
+
 .card-header {
   background-color: rgb(241, 103, 241);
   color: white;
