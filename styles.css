@@ -39,6 +39,17 @@ li {
   padding: 3px;
 }
 
+.container {
+  margin-top: 40px;
+  border: 5px solid black;
+  border-radius: 40px;
+  background-image: linear-gradient(
+    -225deg,
+    #a445b2 0%,
+    #d41872 52%,
+    #ff0066 100%
+  );
+}
 .header {
   align-content: center;
 }
