@@ -53,6 +53,13 @@ li {
   border: none;
 }
 
+.future-forecast {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 120px;
+  margin-left: 200px;
+}
 .footer {
   height: 40px;
   width: max-content;
