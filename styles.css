@@ -29,6 +29,11 @@ button {
   display: block;
 }
 
+ul {
+  list-style: none;
+  text-align: center;
+}
+
 .header {
   align-content: center;
 }
