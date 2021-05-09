@@ -53,6 +53,10 @@ li {
   align-content: center;
 }
 
+.coordinate-button {
+  margin-top: 5px;
+}
+
 .celsius,
 .fahrenheit {
   color: white;
