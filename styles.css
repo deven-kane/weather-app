@@ -70,6 +70,8 @@ li {
 }
 
 .card {
+  margin: 10px;
+  text-align: center;
   border: none;
 }
 
