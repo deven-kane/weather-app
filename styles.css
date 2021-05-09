@@ -1,11 +1,4 @@
 body {
-  background-image: linear-gradient(
-    -225deg,
-    #a445b2 0%,
-    #d41872 52%,
-    #ff0066 100%
-  );
-  background-color: rgb(254, 208, 237);
   background-color: white;
 }
 
