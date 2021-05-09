@@ -33,7 +33,10 @@ button {
 
 ul {
   list-style: none;
+  padding-left: 0;
   text-align: center;
+  color: white;
+  text-shadow: 2px 2px #0c0101;
 }
 
 li {
