@@ -49,6 +49,7 @@ li {
   padding: 40px;
   padding-bottom: 90px;
 }
+
 .header {
   align-content: center;
 }
@@ -81,6 +82,9 @@ li {
 }
 
 .footer {
-  height: 40px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 100px;
+  height: 100px;
   width: max-content;
 }
