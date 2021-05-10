@@ -31,6 +31,11 @@ searchCityForm.addEventListener('submit', function (evt) {
   axios.get(weatherDataUrl).then(showLocationWeather);
 });
 
+function searchCity(city) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showLocationWeather);
+}
+
 // use response for getCurrentPosition to start showPostition function
 function showCurrentCoordinates(response) {
   const lat = response.coords.latitude;
@@ -47,12 +52,33 @@ function showLocationWeather(response) {
   const location = response.data.name;
 
   // update h3 element to reflect current location
-  let h3 = document.querySelector('h3');
-  h3.innerHTML = `${location}`;
+  let currentCity = document.querySelector('.current-city');
+  currentCity.innerHTML = `${location}`;
 
   // update h5 element to reflect current location
-  let h5 = document.querySelector('#temp');
-  h5.innerHTML = `${temperature}`;
+  let displayTemperature = document.querySelector('#temp');
+  displayTemperature.innerHTML = `${temperature}`;
+  displayTemperature.classList.add('F');
+
+  // updated li element to reflect current weather description
+  let weatherDescription = document.querySelector('#description');
+  weatherDescription.innerHTML = response.data.weather[0].main;
+
+  // update li element to reflect current forecast humidity
+  let humidity = document.querySelector('#humidity');
+  humidity.innerHTML = response.data.main.humidity;
+
+  // update li element to reflect current forcast wind speed
+  let windSpeed = document.querySelector('#wind');
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
+
+  //update li element to show current forecast icon
+  let iconElement = document.querySelector('#weather-icon');
+  iconElement.setAttribute(
+    'src',
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute('alt', response.data.weather[0].description);
 }
 
 // reference button element and save to a variable
@@ -61,3 +87,51 @@ let button = document.querySelector('button');
 button.addEventListener('click', function () {
   navigator.geolocation.getCurrentPosition(showCurrentCoordinates);
 });
+
+function convertToCelsius(tempObj) {
+  let celsiusTemp = tempObj.innerHTML * (9 / 5) + 32;
+  tempObj.classList.remove('F');
+  tempObj.classList.add('C');
+
+  tempObj.innerHTML = Math.round(celsiusTemp);
+}
+
+function convertToFahrenheit(tempObj) {
+  let fahrenheitTemp = (tempObj.innerHTML - 32) * (5 / 9);
+  tempObj.classList.remove('C');
+  tempObj.classList.add('F');
+
+  tempObj.innerHTML = Math.round(fahrenheitTemp);
+}
+let tempDisplay = document.querySelector('.temperature-display');
+
+tempDisplay.addEventListener('click', (evt) => {
+  // prevent page reload
+  evt.preventDefault();
+
+  //grab element for current fahrenheit value
+  let currTemp = document.querySelector('#temp');
+  // parse element for current class
+
+  console.log(currTemp);
+
+  let clicked = evt;
+  // console.log('CLICKED CLASS', clicked);
+
+  // if the clicked element is the 'F' span and the current evt object is categorized as 'Celsius'
+  if (clicked.target.id === 'fahrenheit' && currTemp.classList.contains('C')) {
+    convertToCelsius(currTemp);
+  } else if (
+    clicked.target.id === 'celsius' &&
+    currTemp.classList.contains('F')
+  ) {
+    convertToFahrenheit(currTemp);
+  }
+});
+
+// let fahrenheitLink = document.querySelector('#fahrenheit');
+// fahrenheitLink.addEventListener('click', showFahrenheitTemp);
+
+let celsiusTemp = null;
+
+searchCity('San Francisco');
