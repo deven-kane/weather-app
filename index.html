@@ -18,93 +18,105 @@
   <body>
     <div class="container">
       <div class="header">
-        <h1>What's Your Weather?</h1>
+        <h1 class="main-title">What's Your Weather?</h1>
         <form id="enter-city">
           <input type="text" placeholder="Enter City" />
           <input type="submit" value="Search" />
         </form>
-        <button>Current Location</button>
-        <h3>Current City</h3>
-        <h6>local time</h6>
+        <button class="coordinate-button">Current Location</button>
+        <h3 class="current-city">Current City</h3>
+        <h6 class="current-time">local time</h6>
         <div id="temp-info">
-          <h5>
-            <span id="temp"></span>
-            <span class="units">
-              <a href="#" class="fahrenheit">F&deg;</a> |
-              <a href="#" class="celsius">C&deg;</a>
+          <h5 class="temperature-display F">
+            <span id="temp">:)</span>
+            <span id="units">
+              <a href="#" id="fahrenheit">F&deg;</a> |
+              <a href="#" id="celsius">C&deg;</a>
             </span>
-            <ul>
-              <li><span id="description"></span></li>
-              <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind: <span id="wind"></span> MPH</li>
-              <li>Preciptiation: <span id="precipitation"></span>%</li>
-            </ul>
           </h5>
-      <div class="card border-info mb-3" style="max-width: 15rem">
-        <div class="card-header">Sunday</div>
-        <div class="card-body">
-          <i class="fas fa-cloud-sun"></i>
-          <p class="card-text">
-            Expected Weather
-            <br />
-            68&deg; / 55&deg;
-          </p>
-        </div>
-      </div>
-      <div class="card border-info mb-3" style="max-width: 15rem">
-        <div class="card-header">Monday</div>
-        <div class="card-body">
-          <i class="fas fa-cloud-sun-rain"></i>
-          <p class="card-text">
-            Expected Weather
-            <br />
-            62&deg; / 48&deg;
-          </p>
-        </div>
-      </div>
+          <ul>
+            <li><span id="description"></span></li>
+            <li><img src="" alt="" id="weather-icon" /></li>
+            <li>Humidity: <span id="humidity"></span>%</li>
+            <li>Wind: <span id="wind"></span> MPH</li>
+          </ul>
 
-      <div class="card border-info mb-3" style="max-width: 15rem">
-        <div class="card-header">Tuesday</div>
-        <div class="card-body">
-          <i class="fas fa-cloud-sun"></i>
-          <p class="card-text">
-            Expected Weather
-            <br />
-            72&deg; / 59&deg;
-          </p>
-        </div>
-      </div>
+          <div class="future-forecast">
+            <!-- first card -->
+            <div class="card border-info mb-3" style="max-width: 15rem">
+              <div class="card-header">Sunday</div>
+              <div class="card-body">
+                <i class="fas fa-cloud-sun"></i>
+                <p class="card-text">
+                  Expected Weather
+                  <br />
+                  68&deg; / 55&deg;
+                </p>
+              </div>
+            </div>
 
-      <div class="card border-info mb-3" style="max-width: 15rem">
-        <div class="card-header">Wednesday</div>
-        <div class="card-body">
-          <i class="fas fa-sun"></i>
-          <p class="card-text">
-            Expected Weather
-            <br />
-            75&deg; / 61&deg;
-          </p>
-        </div>
-      </div>
+            <!-- second card -->
+            <div class="card border-info mb-3" style="max-width: 15rem">
+              <div class="card-header">Monday</div>
+              <div class="card-body">
+                <i class="fas fa-cloud-sun-rain"></i>
+                <p class="card-text">
+                  Expected Weather
+                  <br />
+                  62&deg; / 48&deg;
+                </p>
+              </div>
+            </div>
 
-      <div class="card border-info mb-3" style="max-width: 15rem">
-        <div class="card-header">Thursday</div>
-        <div class="card-body">
-          <i class="fas fa-cloud"></i>
-          <p class="card-text">
-            Expected Weather
-            <br />
-            66&deg; / 60&deg;
-          </p>
+            <!-- third card -->
+            <div class="card border-info mb-3" style="max-width: 15rem">
+              <div class="card-header">Tuesday</div>
+              <div class="card-body">
+                <i class="fas fa-cloud-sun"></i>
+                <p class="card-text">
+                  Expected Weather
+                  <br />
+                  72&deg; / 59&deg;
+                </p>
+              </div>
+            </div>
+
+            <!-- fourth card -->
+            <div class="card border-info mb-3" style="max-width: 15rem">
+              <div class="card-header">Wednesday</div>
+              <div class="card-body">
+                <i class="fas fa-sun"></i>
+                <p class="card-text">
+                  Expected Weather
+                  <br />
+                  75&deg; / 61&deg;
+                </p>
+              </div>
+            </div>
+
+            <!-- fifth card -->
+            <div class="card border-info mb-3" style="max-width: 15rem">
+              <div class="card-header">Thursday</div>
+              <div class="card-body">
+                <i class="fas fa-cloud"></i>
+                <p class="card-text">
+                  Expected Weather
+                  <br />
+                  66&deg; / 60&deg;
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer">
-        <span
-          ><a href="https://github.com/deven-kane/weather-app"
-            >Open-source by Deven Kane</a
-          ></span
-        >
-      </div>
+    </div>
+
+    <div class="footer">
+      <span>
+        <a href="https://github.com/deven-kane/weather-app">
+          Open-source by Deven Kane
+        </a>
+      </span>
     </div>
     <script src="script.js"></script>
   </body>
