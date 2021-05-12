@@ -48,7 +48,8 @@ function showCurrentCoordinates(response) {
 
 // use response for showCurrentCoordinates to start showLocationWeather function
 function showLocationWeather(response) {
-  const temperature = Math.round(response.data.main.temp);
+  fahrenheitTemp = response.data.main.temp;
+  const temperature = Math.round(fahrenheitTemp);
   const location = response.data.name;
 
   // update h3 element to reflect current location
@@ -88,50 +89,36 @@ button.addEventListener('click', function () {
   navigator.geolocation.getCurrentPosition(showCurrentCoordinates);
 });
 
-function convertToCelsius(tempObj) {
-  let celsiusTemp = tempObj.innerHTML * (9 / 5) + 32;
-  tempObj.classList.remove('F');
-  tempObj.classList.add('C');
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector('#temp');
 
-  tempObj.innerHTML = Math.round(celsiusTemp);
+  celsius.classList.add('active');
+  fahrenheit.classList.remove('active');
+
+  let celsiusTemp = (fahrenheitTemp - 32) * (5 / 9);
+  tempElement.innerHTML = Math.round(celsiusTemp);
 }
 
-function convertToFahrenheit(tempObj) {
-  let fahrenheitTemp = (tempObj.innerHTML - 32) * (5 / 9);
-  tempObj.classList.remove('C');
-  tempObj.classList.add('F');
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
 
-  tempObj.innerHTML = Math.round(fahrenheitTemp);
+  fahrenheit.classList.add('active');
+  celsius.classList.remove('active');
+
+  let tempElement = document.querySelector('#temp');
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
 }
-let tempDisplay = document.querySelector('.temperature-display');
 
-tempDisplay.addEventListener('click', (evt) => {
-  // prevent page reload
-  evt.preventDefault();
+let fahrenheitTemp = null;
 
-  //grab element for current fahrenheit value
-  let currTemp = document.querySelector('#temp');
-  // parse element for current class
+//grab element for current celsius value
+let celsius = document.querySelector('#celsius');
+celsius.addEventListener('click', displayCelsiusTemp);
 
-  console.log(currTemp);
+//grab element for current fahrenheit value
+let fahrenheit = document.querySelector('#fahrenheit');
+fahrenheit.addEventListener('click', displayFahrenheitTemp);
 
-  let clicked = evt;
-  // console.log('CLICKED CLASS', clicked);
-
-  // if the clicked element is the 'F' span and the current evt object is categorized as 'Celsius'
-  if (clicked.target.id === 'fahrenheit' && currTemp.classList.contains('C')) {
-    convertToCelsius(currTemp);
-  } else if (
-    clicked.target.id === 'celsius' &&
-    currTemp.classList.contains('F')
-  ) {
-    convertToFahrenheit(currTemp);
-  }
-});
-
-// let fahrenheitLink = document.querySelector('#fahrenheit');
-// fahrenheitLink.addEventListener('click', showFahrenheitTemp);
-
-let celsiusTemp = null;
-
+//default city display
 searchCity('San Francisco');
