@@ -36,6 +36,22 @@ li {
   padding: 3px;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a.active {
+  color: white;
+  cursor: default;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: rgb(210, 41, 236);
+  text-decoration: none;
+}
+
 .container {
   margin-top: 40px;
   border: 5px solid rgb(210, 41, 236);
